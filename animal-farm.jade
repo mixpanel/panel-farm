@@ -1,0 +1,5 @@
+.farm
+  for buttonName in buttons
+    div= $component.child('animal-button', {attributes: {animal: buttonName}})
+  for animal in animals
+    div= animal
