@@ -1,0 +1,5 @@
+.zoo
+  for button in buttons
+    .control= $component.child('animal-button', {attributes: {animal: button}})
+  for animal in animals
+    p= animal
