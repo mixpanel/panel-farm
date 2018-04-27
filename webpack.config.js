@@ -1,43 +1,43 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+const path = require(`path`);
 
-var webpackConfig = {
-  entry: './index.js',
-  eslint: {
-    configFile: '.eslintrc.json',
+
+const babelLoader = {
+  loader: `babel-loader`,
+  options: {
+    presets: [`env`],
+  },
+};
+
+const webpackConfig = {
+  entry: `./index.js`,
+  output: {
+    path: path.join(__dirname, `build`),
+    filename: `panel-farm.js`,
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules|panel/,
-        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        use: [
+          babelLoader,
+        ],
       },
-    ],
-    loaders: [
       {
         test: /\.jade$/,
         exclude: /node_modules/,
-        loader: 'virtual-jade',
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-            presets: ['es2015'],
-        },
+        use: [
+          babelLoader,
+          {
+            loader: `virtual-jade-loader`,
+            options: {
+              vdom: `snabbdom`,
+              runtime: `var h = require("panel").h;`,
+            },
+          },
+        ],
       },
     ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: 'head',
-      template: 'index.template.html',
-    }),
-  ],
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
   },
 };
 
