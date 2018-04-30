@@ -10,7 +10,7 @@ const babelLoader = {
 };
 
 const webpackConfig = {
-  entry: `./index.js`,
+  entry: `./src/index.js`,
   output: {
     path: path.join(__dirname, `build`),
     filename: `panel-farm.js`,
