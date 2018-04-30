@@ -1,21 +1,21 @@
-import { Component } from 'panel';
+import {Component} from 'panel';
 
 import buttonTemplate from './animal-button.jade';
 import farmTemplate from './animal-farm.jade';
 
-document.registerElement('animal-farm', class extends Component {
+customElements.define(`animal-farm`, class extends Component {
   get config() {
     return {
       defaultState: {
-        buttons: ['llama', 'doge'],
-        animals: ['angry bird'],
+        buttons: [`llama`, `doge`],
+        animals: [`angry bird`],
       },
       template: farmTemplate,
     };
   }
 });
 
-document.registerElement('animal-button', class extends Component {
+customElements.define(`animal-button`, class extends Component {
   get config() {
     return {
       helpers: {
@@ -26,6 +26,12 @@ document.registerElement('animal-button', class extends Component {
   }
 
   get animal() {
-    return this.getAttribute('animal');
+    return this.getAttribute(`animal`);
+  }
+
+  static get observedAttributes() {
+    return super.observedAttributes.concat([
+      `animal`,
+    ]);
   }
 });
