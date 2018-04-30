@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
 
 
@@ -39,6 +40,12 @@ const webpackConfig = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'head',
+      template: 'index.template.html',
+    }),
+  ],
 };
 
 module.exports = webpackConfig;
