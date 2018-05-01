@@ -1,0 +1,5 @@
+.farm-wrapper
+  .farm-nav
+    each navItem in $helpers.NAV_ITEMS
+      a(attrs={href: navItem.href})= navItem.text
+  .farm= $component.child(`view-${view}`)
