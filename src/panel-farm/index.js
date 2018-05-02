@@ -15,8 +15,8 @@ customElements.define(`panel-farm`, class extends Component {
       },
       helpers: {
         NAV_ITEMS: [
-          {href: `#welcome`, text: `Welcome `},
-          {href: `#farm`, text: `Visit the farm`},
+          {view: `welcome`, text: `Welcome `},
+          {view: `farm`, text: `Visit the farm`},
         ],
       },
       template,
