@@ -19,6 +19,11 @@ customElements.define(`panel-farm`, class extends Component {
           {view: `farm`, text: `Visit the farm`},
         ],
       },
+      routes: {
+        'welcome': () => ({view: `welcome`}),
+        'farm':    () => ({view: `farm`}),
+        '':        `welcome`,
+      },
       template,
     };
   }
