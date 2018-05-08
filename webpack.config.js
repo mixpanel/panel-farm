@@ -1,3 +1,4 @@
+const ExtractTextPlugin = require(`extract-text-webpack-plugin`);
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
 
@@ -10,10 +11,12 @@ const babelLoader = {
 };
 
 const webpackConfig = {
-  entry: `./src/index.js`,
+  entry: {
+    farm: `./src/index.js`,
+  },
   output: {
     path: path.join(__dirname, `build`),
-    filename: `panel-farm.js`,
+    filename: `[name].bundle.js`,
   },
   module: {
     rules: [
@@ -38,9 +41,22 @@ const webpackConfig = {
           },
         ],
       },
+      {
+        test: /\.styl$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {loader: `css-loader`},
+            {loader: `postcss-loader`},
+            {loader: `stylus-loader`},
+          ],
+          fallback: `style-loader`,
+        }),
+      },
     ],
   },
   plugins: [
+    new ExtractTextPlugin(`[name].bundle.css`),
     new HtmlWebpackPlugin({
       inject: 'head',
       template: 'index.template.html',
