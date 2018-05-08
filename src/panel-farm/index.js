@@ -1,6 +1,7 @@
 import {Component} from 'panel';
 
 import './view-welcome';
+import './view-farm';
 
 import template from './template.jade';
 
