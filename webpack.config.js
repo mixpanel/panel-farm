@@ -3,12 +3,17 @@ const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
 
 
-const babelLoader = {
+const BABEL_LOADER = {
   loader: `babel-loader`,
   options: {
     presets: [`env`],
   },
 };
+const STYLUS_LOADERS = [
+  {loader: `css-loader`},
+  {loader: `postcss-loader`},
+  {loader: `stylus-loader`},
+];
 
 const webpackConfig = {
   entry: {
@@ -24,14 +29,14 @@ const webpackConfig = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          babelLoader,
+          BABEL_LOADER,
         ],
       },
       {
         test: /\.jade$/,
         exclude: /node_modules/,
         use: [
-          babelLoader,
+          BABEL_LOADER,
           {
             loader: `virtual-jade-loader`,
             options: {
@@ -44,14 +49,18 @@ const webpackConfig = {
       {
         test: /\.styl$/,
         exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {loader: `css-loader`},
-            {loader: `postcss-loader`},
-            {loader: `stylus-loader`},
-          ],
-          fallback: `style-loader`,
-        }),
+        oneOf: [
+          {
+            resourceQuery: /inline/,
+            loader: STYLUS_LOADERS,
+          },
+          {
+            loader: ExtractTextPlugin.extract({
+              use: STYLUS_LOADERS,
+              fallback: `style-loader`,
+            }),
+          },
+        ],
       },
     ],
   },
