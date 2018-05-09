@@ -7,4 +7,18 @@
   height 100px
   justify-content center
   margin 5px
+  position relative
   width 100px
+  &:hover
+    .close-button
+      display block
+  .close-button
+    cursor pointer
+    display none
+    position absolute
+    right 0
+    top 0
+    &::before
+      color red
+      content "x"
+      font-size 20px

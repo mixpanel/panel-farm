@@ -2,5 +2,5 @@
   for buttonType in buttons
     button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
   .farm-animals
-    for animal in animals
-      animal-badge(attrs={animal})
+    for animal, idx in animals
+      animal-badge(attrs={animal} on={close: () => $helpers.removeAnimal(idx)})

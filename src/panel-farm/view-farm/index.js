@@ -9,6 +9,10 @@ customElements.define(`view-farm`, class extends Component {
       template,
       helpers: {
         addAnimal: animal => this.update({animals: [...this.state.animals, animal]}),
+        removeAnimal: idx => this.update({animals: [
+          ...this.state.animals.slice(0, idx),
+          ...this.state.animals.slice(idx + 1, this.state.animals.length),
+        ]}),
       },
     };
   }

@@ -9,6 +9,17 @@ customElements.define(`animal-badge`, class extends Component {
       template,
       css,
       useShadowDom: true,
+
+      helpers: {
+        clickClose: () => this.dispatchEvent(new CustomEvent(`close`)),
+      },
     };
+  }
+
+  static get observedAttributes() {
+    return [
+      ...super.observedAttributes,
+      `animal`,
+    ];
   }
 });
