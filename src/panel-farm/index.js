@@ -4,6 +4,7 @@ import './view-welcome';
 import './view-farm';
 
 import template from './template.jade';
+import './styles.styl';
 
 customElements.define(`panel-farm`, class extends Component {
   get config() {

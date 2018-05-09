@@ -1,0 +1,24 @@
+@import '../reset.css'
+
+.farm-wrapper
+  font 14px 'Helvetica Neue', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif
+  padding 20px
+
+.farm-nav
+  margin-bottom 10px
+  a
+    border 1px solid blue
+    color blue
+    display inline-flex
+    justify-content center
+    min-width 120px
+    padding 5px
+    text-decoration none
+    &:first-child
+      border-radius 5px 0 0 5px
+      border-right none
+    &:last-child
+      border-radius 0 5px 5px 0
+    &.nav-selected
+      background-color blue
+      color white
