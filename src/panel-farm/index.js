@@ -1,5 +1,6 @@
 import {Component} from 'panel';
 
+import './animal-badge';
 import './view-welcome';
 import './view-farm';
 

@@ -2,4 +2,4 @@
   for buttonType in buttons
     button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
   for animal in animals
-    div= animal
+    animal-badge(attrs={animal})
