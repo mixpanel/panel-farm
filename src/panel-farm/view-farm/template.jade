@@ -1,5 +1,5 @@
 .view-farm
   for buttonType in buttons
-    animal-button(attrs: {animal: buttonType}) Add #{buttonType}
+    button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
   for animal in animals
     div= animal
