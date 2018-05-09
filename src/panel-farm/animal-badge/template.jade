@@ -1,1 +1,6 @@
-.animal-badge= $component.getAttribute(`animal`)
+.animal-badge
+  img(attrs={
+    src: `/images/${$component.getAttribute(`animal`)}.png`,
+    height: 90,
+    width: 90,
+  })
