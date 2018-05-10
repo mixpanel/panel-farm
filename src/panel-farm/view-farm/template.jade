@@ -3,4 +3,15 @@
     button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
   .farm-animals
     for animal, idx in animals
-      animal-badge(attrs={animal} on={close: () => $helpers.removeAnimal(idx)})
+      animal-badge(
+        attrs={animal: animal.name}
+        on={close: () => $helpers.removeAnimal(idx)}
+
+        /* entry/exit animation config */
+        key=animal.id
+        class={
+          visible: false,
+          delayed: {visible: true},
+          remove:  {visible: false, delayRemove: 250},
+        }
+      )

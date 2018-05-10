@@ -12,7 +12,7 @@ customElements.define(`panel-farm`, class extends Component {
     return {
       defaultState: {
         buttons: [`llama`, `doge`],
-        animals: [`capybara`],
+        animals: [{name: `capybara`, id: 0}],
 
         view: `welcome`,
       },

@@ -12,6 +12,7 @@ customElements.define(`animal-badge`, class extends Component {
 
       helpers: {
         clickClose: () => this.dispatchEvent(new CustomEvent(`close`)),
+        isVisible: () => this.classList.contains(`visible`),
       },
     };
   }
@@ -20,6 +21,7 @@ customElements.define(`animal-badge`, class extends Component {
     return [
       ...super.observedAttributes,
       `animal`,
+      `class`,
     ];
   }
 });
