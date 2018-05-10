@@ -1,6 +1,6 @@
 .animal-badge(class={visible: $helpers.isVisible()})
   img(attrs={
-    src: `/images/${$component.getAttribute(`animal`)}.png`,
+    src: $helpers.ANIMAL_URLS[$component.getAttribute(`animal`)],
     height: 90,
     width: 90,
   })
