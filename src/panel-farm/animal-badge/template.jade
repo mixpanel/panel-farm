@@ -4,4 +4,5 @@
     height: 90,
     width: 90,
   })
-  .close-button(on={click: $helpers.clickClose})
+  if $helpers.isCloseable()
+    .close-button(on={click: $helpers.clickClose})

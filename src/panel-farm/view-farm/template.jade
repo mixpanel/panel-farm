@@ -4,7 +4,10 @@
   .farm-animals
     for animal, idx in animals
       animal-badge(
-        attrs={animal: animal.name}
+        attrs={
+          animal: animal.name,
+          closeable: true,
+        }
         on={close: () => $helpers.removeAnimal(idx)}
 
         /* entry/exit animation config */
