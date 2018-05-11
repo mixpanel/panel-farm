@@ -1,1 +1,7 @@
-.view-welcome Welcome to the farm! Occupants: #{animals.length}
+.view-welcome
+  h1 Welcome to the farm!
+  p
+    | This is a demo app for playing around with #[a(attrs={href: 'https://github.com/mixpanel/panel'}) Panel]
+    |  in your browser's dev tools.
+    |  Click over to the #[a(attrs={href: '#farm'}) farm]
+    |  to see #{animals.length} cute #{$helpers.pluralize(`animal`, animals.length)}!
