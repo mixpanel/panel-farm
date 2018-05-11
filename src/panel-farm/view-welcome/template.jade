@@ -5,3 +5,7 @@
     |  in your browser's dev tools.
     |  Click over to the #[a(attrs={href: '#farm'}) farm]
     |  to see #{animals.length} cute #{$helpers.pluralize(`animal`, animals.length)}!
+
+  animal-badge.visible(attrs={animal: `doge`}    style={top:    `10%`, left:  `5%` })
+  animal-badge.visible(attrs={animal: `husky`}   style={top:    `20%`, right: `25%`})
+  animal-badge.visible(attrs={animal: `raccoon`} style={bottom: `10%`, left:  `45%`})
