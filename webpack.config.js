@@ -21,7 +21,7 @@ const webpackConfig = {
   },
   output: {
     path: path.join(__dirname, `build`),
-    filename: `[name].bundle.js`,
+    filename: `[name]-[hash].bundle.js`,
   },
   module: {
     rules: [
@@ -77,7 +77,7 @@ const webpackConfig = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin(`[name].bundle.css`),
+    new ExtractTextPlugin(`[name]-[hash].bundle.css`),
     new HtmlWebpackPlugin({
       inject: 'head',
       template: 'index.template.html',
