@@ -18,6 +18,10 @@ const STYLUS_LOADERS = [
 const webpackConfig = {
   entry: {
     farm: `./src/index.js`,
+    polyfills: [
+      `@webcomponents/custom-elements`,
+      `@webcomponents/shadydom`,
+    ],
   },
   output: {
     path: path.join(__dirname, `build`),
@@ -79,7 +83,8 @@ const webpackConfig = {
   plugins: [
     new ExtractTextPlugin(`[name]-[hash].bundle.css`),
     new HtmlWebpackPlugin({
-      template: 'index.template.html',
+      template: `index.template.html`,
+      chunksSortMode: (a, b) => a.names[0] === `polyfills` ? -1 : 1, // polyfills first
     }),
   ],
 };
