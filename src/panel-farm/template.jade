@@ -6,9 +6,12 @@
         class={'nav-selected': view === navItem.view}
       )= navItem.text
 
+  //- linked child component, tag chosen dynamically
   .farm= $component.child(`view-${view}`)
 
-  //- This animal uses a bit of inline styling, for positioning which can be controlled by state updates
+  //- independent component
+  //- this animal uses a bit of inline styling, for positioning
+  //- which can be controlled by state updates
   animal-badge.background-animal(
     attrs={animal: backgroundAnimal}
     style=backgroundAnimalStyle
