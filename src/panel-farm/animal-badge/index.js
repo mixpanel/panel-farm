@@ -31,7 +31,7 @@ class AnimalBadge extends Component {
         ANIMAL_URLS,
         clickClose: () => this.dispatchEvent(new CustomEvent(`close`)),
         isCloseable: () => this.isAttributeEnabled(`closeable`),
-        isVisible: () => this.classList.contains(`visible`),
+        isEnteringOrExiting: () => this.classList.contains(`inout`),
       },
     };
   }
