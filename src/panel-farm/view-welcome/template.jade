@@ -5,7 +5,3 @@
     |  in your browser's dev tools.
     |  Click over to the #[a(attrs={href: '#farm'}) farm]
     |  to see #{animals.length} cute #{$helpers.pluralize(`animal`, animals.length)}!
-
-  //- These animals use a bit of inline styling, for positioning which can be controlled by state updates
-  each animal in welcomeAnimals
-    animal-badge.visible(attrs={animal: animal.name} style=animal.style)

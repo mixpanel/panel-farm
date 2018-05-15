@@ -14,6 +14,12 @@ class PanelFarm extends Component {
         buttons: [`llama`, `doge`, `kitty`, `raccoon`, `husky`],
         animals: [{name: `capybara`, id: 0}],
 
+        backgroundAnimal: `doge`,
+        backgroundAnimalStyle: {
+          top: `10px`,
+          right: `10px`,
+        },
+
         view: `welcome`,
       },
       helpers: {

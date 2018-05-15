@@ -5,4 +5,11 @@
         attrs={href: `#${navItem.view}`}
         class={'nav-selected': view === navItem.view}
       )= navItem.text
+
   .farm= $component.child(`view-${view}`)
+
+  //- This animal uses a bit of inline styling, for positioning which can be controlled by state updates
+  animal-badge.background-animal.visible(
+    attrs={animal: backgroundAnimal}
+    style=backgroundAnimalStyle
+  )
