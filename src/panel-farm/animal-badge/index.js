@@ -20,7 +20,7 @@ const ANIMAL_URLS = {
 };
 
 
-customElements.define(`animal-badge`, class extends Component {
+class AnimalBadge extends Component {
   get config() {
     return {
       template,
@@ -44,4 +44,6 @@ customElements.define(`animal-badge`, class extends Component {
       `closeable`,
     ];
   }
-});
+}
+
+customElements.define(`animal-badge`, AnimalBadge);

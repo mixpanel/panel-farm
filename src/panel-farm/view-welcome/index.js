@@ -12,6 +12,7 @@ customElements.define(`view-welcome`, class extends Component {
           {name: `husky`,   style: {top:    `20%`,   right: `25%`}},
           {name: `raccoon`, style: {bottom: `10%`,   left:  `45%`}},
         ],
+        welcomeText: `Welcome to the farm!`,  // dynamic just for demo purposes
       },
 
       helpers: {

@@ -1,6 +1,7 @@
 .view-farm
-  for buttonType in buttons
-    button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
+  .farm-buttons
+    for buttonType in buttons
+      button(on={click: () => $helpers.addAnimal(buttonType)}) Add #{buttonType}
   .farm-animals
     for animal, idx in animals
       animal-badge(

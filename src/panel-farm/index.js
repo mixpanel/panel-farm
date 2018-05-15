@@ -7,7 +7,7 @@ import './view-farm';
 import template from './template.jade';
 import './styles.styl';
 
-customElements.define(`panel-farm`, class extends Component {
+class PanelFarm extends Component {
   get config() {
     return {
       defaultState: {
@@ -30,4 +30,6 @@ customElements.define(`panel-farm`, class extends Component {
       template,
     };
   }
-});
+}
+
+customElements.define(`panel-farm`, PanelFarm);
