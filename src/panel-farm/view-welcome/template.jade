@@ -5,3 +5,11 @@
     |  in your browser's dev tools.
     |  Click over to the #[a(attrs={href: '#farm'}) farm]
     |  to see #{animals.length} cute #{$helpers.pluralize(`animal`, animals.length)}!
+  p
+    | In the JS console, you can get a reference to the running app with
+    span.code-sample  app = document.querySelector(`panel-farm`)
+    | . Look at #[span.code-sample app.state] to get an idea of what's controllable dynamically.
+    |  For instance, to change the header text of this screen, try:
+  span.code-sample app.update({welcomeText: `Hello there!`});
+  p
+    | The #[a(attrs={href: '#farm'}) farm screen] starts out with one cute capybara and some buttons to add different animals to keep it company. Can you add another capybara?
