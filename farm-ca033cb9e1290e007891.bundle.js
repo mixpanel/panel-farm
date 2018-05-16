@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -130,7 +130,7 @@ var _snabbdom = __webpack_require__(14);
 
 var _snabbdom2 = _interopRequireDefault(_snabbdom);
 
-var _h = __webpack_require__(4);
+var _h = __webpack_require__(3);
 
 var _h2 = _interopRequireDefault(_h);
 
@@ -250,11 +250,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cuid = __webpack_require__(10);
+var _cuid = __webpack_require__(9);
 
 var _cuid2 = _interopRequireDefault(_cuid);
 
-var _lodash = __webpack_require__(11);
+var _lodash = __webpack_require__(10);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -854,39 +854,12 @@ exports.default = Component;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var vnode_1 = __webpack_require__(5);
-var is = __webpack_require__(6);
+var vnode_1 = __webpack_require__(4);
+var is = __webpack_require__(5);
 function addNS(data, children, sel) {
     data.ns = 'http://www.w3.org/2000/svg';
     if (sel !== 'foreignObject' && children !== undefined) {
@@ -945,7 +918,7 @@ exports.default = h;
 //# sourceMappingURL=h.js.map
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -961,7 +934,7 @@ exports.default = vnode;
 //# sourceMappingURL=vnode.js.map
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -974,7 +947,7 @@ exports.primitive = primitive;
 //# sourceMappingURL=is.js.map
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1035,16 +1008,16 @@ var StateStore = function () {
 exports.default = StateStore;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(9);
+__webpack_require__(8);
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1074,16 +1047,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PanelFarm = function (_Component) {
-  _inherits(PanelFarm, _Component);
+customElements.define('panel-farm', function (_Component) {
+  _inherits(_class, _Component);
 
-  function PanelFarm() {
-    _classCallCheck(this, PanelFarm);
+  function _class() {
+    _classCallCheck(this, _class);
 
-    return _possibleConstructorReturn(this, (PanelFarm.__proto__ || Object.getPrototypeOf(PanelFarm)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
   }
 
-  _createClass(PanelFarm, [{
+  _createClass(_class, [{
     key: 'config',
     get: function get() {
       return {
@@ -1110,13 +1083,11 @@ var PanelFarm = function (_Component) {
     }
   }]);
 
-  return PanelFarm;
-}(_panel.Component);
-
-customElements.define('panel-farm', PanelFarm);
+  return _class;
+}(_panel.Component));
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1232,7 +1203,7 @@ customElements.define('panel-farm', PanelFarm);
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -1739,7 +1710,34 @@ var pick = baseRest(function(object, props) {
 
 module.exports = pick;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 /* 12 */
@@ -1885,8 +1883,8 @@ exports.default = ExtendableHTMLElement;
 
 "use strict";
 
-var vnode_1 = __webpack_require__(5);
-var is = __webpack_require__(6);
+var vnode_1 = __webpack_require__(4);
+var is = __webpack_require__(5);
 var htmldomapi_1 = __webpack_require__(15);
 function isUndef(s) { return s === undefined; }
 function isDef(s) { return s !== undefined; }
@@ -1907,7 +1905,7 @@ function createKeyToOldIdx(children, beginIdx, endIdx) {
     return map;
 }
 var hooks = ['create', 'update', 'remove', 'destroy', 'pre', 'post'];
-var h_1 = __webpack_require__(4);
+var h_1 = __webpack_require__(3);
 exports.h = h_1.h;
 var thunk_1 = __webpack_require__(16);
 exports.thunk = thunk_1.thunk;
@@ -2224,7 +2222,7 @@ exports.default = exports.htmlDomApi;
 
 "use strict";
 
-var h_1 = __webpack_require__(4);
+var h_1 = __webpack_require__(3);
 function copyToThunk(vnode, thunk) {
     thunk.elm = vnode.elm;
     vnode.data.fn = thunk.data.fn;
@@ -2874,7 +2872,7 @@ var _stateController = __webpack_require__(27);
 
 var _stateController2 = _interopRequireDefault(_stateController);
 
-var _stateStore = __webpack_require__(7);
+var _stateStore = __webpack_require__(6);
 
 var _stateStore2 = _interopRequireDefault(_stateStore);
 
@@ -3187,7 +3185,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _stateStore = __webpack_require__(7);
+var _stateStore = __webpack_require__(6);
 
 var _stateStore2 = _interopRequireDefault(_stateStore);
 
@@ -3317,16 +3315,16 @@ var ANIMAL_URLS = {
   raccoon: _raccoon2.default
 };
 
-var AnimalBadge = function (_Component) {
-  _inherits(AnimalBadge, _Component);
+customElements.define('animal-badge', function (_Component) {
+  _inherits(_class, _Component);
 
-  function AnimalBadge() {
-    _classCallCheck(this, AnimalBadge);
+  function _class() {
+    _classCallCheck(this, _class);
 
-    return _possibleConstructorReturn(this, (AnimalBadge.__proto__ || Object.getPrototypeOf(AnimalBadge)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
   }
 
-  _createClass(AnimalBadge, [{
+  _createClass(_class, [{
     key: 'config',
     get: function get() {
       var _this2 = this;
@@ -3353,14 +3351,12 @@ var AnimalBadge = function (_Component) {
   }], [{
     key: 'observedAttributes',
     get: function get() {
-      return [].concat(_toConsumableArray(_get(AnimalBadge.__proto__ || Object.getPrototypeOf(AnimalBadge), 'observedAttributes', this)), ['animal', 'class', 'closeable']);
+      return [].concat(_toConsumableArray(_get(_class.__proto__ || Object.getPrototypeOf(_class), 'observedAttributes', this)), ['animal', 'class', 'closeable']);
     }
   }]);
 
-  return AnimalBadge;
-}(_panel.Component);
-
-customElements.define('animal-badge', AnimalBadge);
+  return _class;
+}(_panel.Component));
 
 /***/ }),
 /* 29 */
@@ -3580,8 +3576,7 @@ customElements.define('view-welcome', function (_Component) {
     get: function get() {
       return {
         defaultState: {
-          welcomeAnimals: [{ name: 'doge', style: { bottom: '-200%', left: '5%' } }, { name: 'husky', style: { top: '20%', right: '25%' } }, { name: 'raccoon', style: { bottom: '10%', left: '45%' } }],
-          welcomeText: 'Welcome to the farm!' // dynamic just for demo purposes
+          welcomeAnimals: [{ name: 'doge', style: { bottom: '-200%', left: '5%' } }, { name: 'husky', style: { top: '20%', right: '25%' } }, { name: 'raccoon', style: { bottom: '10%', left: '45%' } }]
         },
 
         helpers: {
@@ -3607,11 +3602,8 @@ customElements.define('view-welcome', function (_Component) {
 
 function _jade_template_fn(locals) {
   locals = locals || {};;;
-  var result_of_with = function ($helpers, Array, String, animals, welcomeAnimals, welcomeText) {
+  var result_of_with = function ($helpers, Array, animals, welcomeAnimals) {
     var h = __webpack_require__(0).h;
-    var __vjadeSafeCode = function __vjadeSafeCode(code) {
-      return code || String(code);
-    };
     return {
       value: h("div", {
         "class": {
@@ -3619,7 +3611,11 @@ function _jade_template_fn(locals) {
         }
       }, function () {
         var __jade_nodes = [];
-        __jade_nodes = __jade_nodes.concat(h("h1", [__vjadeSafeCode(welcomeText)]));
+        __jade_nodes = __jade_nodes.concat(h("h1", function () {
+          var __jade_nodes = [];
+          __jade_nodes = __jade_nodes.concat("Welcome to the farm!");;
+          return __jade_nodes;
+        }.call(this).filter(Boolean)));
         __jade_nodes = __jade_nodes.concat(h("p", function () {
           var __jade_nodes = [];
           __jade_nodes = __jade_nodes.concat(function () {
@@ -3716,7 +3712,7 @@ function _jade_template_fn(locals) {
         return __jade_nodes;
       }.call(this).filter(Boolean))
     };
-  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeAnimals" in locals ? locals.welcomeAnimals : typeof welcomeAnimals !== "undefined" ? welcomeAnimals : undefined, "welcomeText" in locals ? locals.welcomeText : typeof welcomeText !== "undefined" ? welcomeText : undefined);
+  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeAnimals" in locals ? locals.welcomeAnimals : typeof welcomeAnimals !== "undefined" ? welcomeAnimals : undefined);
   if (result_of_with) return result_of_with.value;
 }
 module.exports = _jade_template_fn;
@@ -3807,67 +3803,59 @@ function _jade_template_fn(locals) {
         }
       }, function () {
         var __jade_nodes = [];
-        __jade_nodes = __jade_nodes.concat(h("div", {
-          "class": {
-            'farm-buttons': true
-          }
-        }, function () {
-          var __jade_nodes = [];
-          __jade_nodes = __jade_nodes.concat(function () {
-            var $$obj = buttons;
-            var $$eachNodes;
-            var $$iterated = false;
-            if (Array.isArray($$obj)) {
-              $$eachNodes = $$obj.reduce(function ($$eachNodes, buttonType, $index) {
-                $$iterated = true;
-                return $$eachNodes.concat(function () {
-                  var __jade_nodes = [];
-                  __jade_nodes = __jade_nodes.concat(h("button", {
-                    "on": {
-                      click: function click() {
-                        return $helpers.addAnimal(buttonType);
-                      }
+        __jade_nodes = __jade_nodes.concat(function () {
+          var $$obj = buttons;
+          var $$eachNodes;
+          var $$iterated = false;
+          if (Array.isArray($$obj)) {
+            $$eachNodes = $$obj.reduce(function ($$eachNodes, buttonType, $index) {
+              $$iterated = true;
+              return $$eachNodes.concat(function () {
+                var __jade_nodes = [];
+                __jade_nodes = __jade_nodes.concat(h("button", {
+                  "on": {
+                    click: function click() {
+                      return $helpers.addAnimal(buttonType);
                     }
-                  }, function () {
-                    var __jade_nodes = [];
-                    __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
-                    return __jade_nodes;
-                  }.call(this).filter(Boolean)));;
-                  return __jade_nodes;
-                }.call(this));
-              }, []);
-            } else {
-              $$eachNodes = [];
-              for (var $$objKey in $$obj) {
-                (function () {
-                  var $index = $$objKey;
-                  if ($$obj.hasOwnProperty($index)) {
-                    $$iterated = true;
-                    var buttonType = $$obj[$index];
-                    $$eachNodes = $$eachNodes.concat(function () {
-                      var __jade_nodes = [];
-                      __jade_nodes = __jade_nodes.concat(h("button", {
-                        "on": {
-                          click: function click() {
-                            return $helpers.addAnimal(buttonType);
-                          }
-                        }
-                      }, function () {
-                        var __jade_nodes = [];
-                        __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
-                        return __jade_nodes;
-                      }.call(this).filter(Boolean)));;
-                      return __jade_nodes;
-                    }.call(this));
                   }
-                })();
-              }
+                }, function () {
+                  var __jade_nodes = [];
+                  __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
+                  return __jade_nodes;
+                }.call(this).filter(Boolean)));;
+                return __jade_nodes;
+              }.call(this));
+            }, []);
+          } else {
+            $$eachNodes = [];
+            for (var $$objKey in $$obj) {
+              (function () {
+                var $index = $$objKey;
+                if ($$obj.hasOwnProperty($index)) {
+                  $$iterated = true;
+                  var buttonType = $$obj[$index];
+                  $$eachNodes = $$eachNodes.concat(function () {
+                    var __jade_nodes = [];
+                    __jade_nodes = __jade_nodes.concat(h("button", {
+                      "on": {
+                        click: function click() {
+                          return $helpers.addAnimal(buttonType);
+                        }
+                      }
+                    }, function () {
+                      var __jade_nodes = [];
+                      __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
+                      return __jade_nodes;
+                    }.call(this).filter(Boolean)));;
+                    return __jade_nodes;
+                  }.call(this));
+                }
+              })();
             }
+          }
 
-            return $$eachNodes;
-          }());;
-          return __jade_nodes;
-        }.call(this).filter(Boolean)));
+          return $$eachNodes;
+        }());
         __jade_nodes = __jade_nodes.concat(h("div", {
           "class": {
             'farm-animals': true
