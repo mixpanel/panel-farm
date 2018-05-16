@@ -1058,13 +1058,13 @@ __webpack_require__(28);
 
 __webpack_require__(38);
 
-__webpack_require__(40);
+__webpack_require__(41);
 
-var _template = __webpack_require__(43);
+var _template = __webpack_require__(44);
 
 var _template2 = _interopRequireDefault(_template);
 
-__webpack_require__(44);
+__webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1090,12 +1090,6 @@ var PanelFarm = function (_Component) {
         defaultState: {
           buttons: ['llama', 'doge', 'kitty', 'raccoon', 'husky'],
           animals: [{ name: 'capybara', id: 0 }],
-
-          backgroundAnimal: 'doge',
-          backgroundAnimalStyle: {
-            top: '10px',
-            right: '10px'
-          },
 
           view: 'welcome'
         },
@@ -3350,8 +3344,8 @@ var AnimalBadge = function (_Component) {
           isCloseable: function isCloseable() {
             return _this2.isAttributeEnabled('closeable');
           },
-          isEnteringOrExiting: function isEnteringOrExiting() {
-            return _this2.classList.contains('inout');
+          isVisible: function isVisible() {
+            return _this2.classList.contains('visible');
           }
         }
       };
@@ -3372,37 +3366,37 @@ customElements.define('animal-badge', AnimalBadge);
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/capybara-eb88952edd5c73ce7e08368458caa01a.png";
+module.exports = __webpack_require__.p + "images/capybara-793c345e9e7a4190a60112ca097ec950.png";
 
 /***/ }),
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/doge-ecdd44281372b7491186224042beec12.png";
+module.exports = __webpack_require__.p + "images/doge-793b8d7e2f308a0d46a1662b9f4a5799.png";
 
 /***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/husky-d639b17fd6be5007059907a97fcb83b2.png";
+module.exports = __webpack_require__.p + "images/husky-223cc57d00cbd4f2e97bc7c4284aac3a.png";
 
 /***/ }),
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/kitty-831425589b8197ab2a8762d82e12bdfe.png";
+module.exports = __webpack_require__.p + "images/kitty-87c14f07825dafb2f7a4b6226b4f1f37.png";
 
 /***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/llama-d626d9417525a096491984efe40a9fbe.png";
+module.exports = __webpack_require__.p + "images/llama-ede62aa08104695c68a015b214a5efc3.png";
 
 /***/ }),
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/raccoon-e56ccb83c2469bedb80820d62a3d45ce.png";
+module.exports = __webpack_require__.p + "images/raccoon-54450e6522520b8dcb63a606c5e96888.png";
 
 /***/ }),
 /* 35 */
@@ -3418,7 +3412,7 @@ function _jade_template_fn(locals) {
     return {
       value: h("div", {
         "class": Object.assign({}, {
-          inout: $helpers.isEnteringOrExiting()
+          visible: $helpers.isVisible()
         }, {
           'animal-badge': true
         })
@@ -3460,7 +3454,7 @@ exports = module.exports = __webpack_require__(37)(false);
 
 
 // module
-exports.push([module.i, ".animal-badge {\n  align-items: center;\n  background-color: #e5e5ff;\n  border-radius: 50px;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.15);\n  display: inline-flex;\n  height: 100px;\n  justify-content: center;\n  margin: 5px;\n  opacity: 1;\n  position: relative;\n  transition: width 250ms, opacity 250ms;\n  width: 100px;\n}\n.animal-badge.inout {\n  opacity: 0;\n  width: 0px;\n}\n.animal-badge:hover .close-button {\n  display: block;\n}\n.animal-badge .close-button {\n  cursor: pointer;\n  display: none;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n.animal-badge .close-button::before {\n  color: #f00;\n  content: \"x\";\n  font-size: 20px;\n}\n", ""]);
+exports.push([module.i, ".animal-badge {\n  align-items: center;\n  background-color: #e5e5ff;\n  border-radius: 50px;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.15);\n  display: inline-flex;\n  height: 100px;\n  justify-content: center;\n  margin: 5px;\n  opacity: 0;\n  position: relative;\n  width: 0px;\n  transition: width 250ms, opacity 250ms;\n}\n.animal-badge.visible {\n  opacity: 1;\n  width: 100px;\n}\n.animal-badge:hover .close-button {\n  display: block;\n}\n.animal-badge .close-button {\n  cursor: pointer;\n  display: none;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n.animal-badge .close-button::before {\n  color: #f00;\n  content: \"x\";\n  font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -3562,6 +3556,8 @@ var _template = __webpack_require__(39);
 
 var _template2 = _interopRequireDefault(_template);
 
+__webpack_require__(40);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3584,6 +3580,7 @@ customElements.define('view-welcome', function (_Component) {
     get: function get() {
       return {
         defaultState: {
+          welcomeAnimals: [{ name: 'doge', style: { bottom: '-200%', left: '5%' } }, { name: 'husky', style: { top: '20%', right: '25%' } }, { name: 'raccoon', style: { bottom: '10%', left: '45%' } }],
           welcomeText: 'Welcome to the farm!' // dynamic just for demo purposes
         },
 
@@ -3610,7 +3607,7 @@ customElements.define('view-welcome', function (_Component) {
 
 function _jade_template_fn(locals) {
   locals = locals || {};;;
-  var result_of_with = function ($helpers, String, animals, welcomeText) {
+  var result_of_with = function ($helpers, Array, String, animals, welcomeAnimals, welcomeText) {
     var h = __webpack_require__(0).h;
     var __vjadeSafeCode = function __vjadeSafeCode(code) {
       return code || String(code);
@@ -3666,17 +3663,72 @@ function _jade_template_fn(locals) {
           }.call(this));
           __jade_nodes = __jade_nodes.concat(" to see " + animals.length + " cute " + $helpers.pluralize("animal", animals.length) + "!");;
           return __jade_nodes;
-        }.call(this).filter(Boolean)));;
+        }.call(this).filter(Boolean))); /*  These animals use a bit of inline styling, for positioning which can be controlled by state updates */
+        __jade_nodes = __jade_nodes.concat(function () {
+          var $$obj = welcomeAnimals;
+          var $$eachNodes;
+          var $$iterated = false;
+          if (Array.isArray($$obj)) {
+            $$eachNodes = $$obj.reduce(function ($$eachNodes, animal, $index) {
+              $$iterated = true;
+              return $$eachNodes.concat(function () {
+                var __jade_nodes = [];
+                __jade_nodes = __jade_nodes.concat(h("animal-badge", {
+                  "attrs": {
+                    animal: animal.name
+                  },
+                  "style": animal.style,
+                  "class": {
+                    'visible': true
+                  }
+                }));;
+                return __jade_nodes;
+              }.call(this));
+            }, []);
+          } else {
+            $$eachNodes = [];
+            for (var $$objKey in $$obj) {
+              (function () {
+                var $index = $$objKey;
+                if ($$obj.hasOwnProperty($index)) {
+                  $$iterated = true;
+                  var animal = $$obj[$index];
+                  $$eachNodes = $$eachNodes.concat(function () {
+                    var __jade_nodes = [];
+                    __jade_nodes = __jade_nodes.concat(h("animal-badge", {
+                      "attrs": {
+                        animal: animal.name
+                      },
+                      "style": animal.style,
+                      "class": {
+                        'visible': true
+                      }
+                    }));;
+                    return __jade_nodes;
+                  }.call(this));
+                }
+              })();
+            }
+          }
+
+          return $$eachNodes;
+        }());;
         return __jade_nodes;
       }.call(this).filter(Boolean))
     };
-  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeText" in locals ? locals.welcomeText : typeof welcomeText !== "undefined" ? welcomeText : undefined);
+  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeAnimals" in locals ? locals.welcomeAnimals : typeof welcomeAnimals !== "undefined" ? welcomeAnimals : undefined, "welcomeText" in locals ? locals.welcomeText : typeof welcomeText !== "undefined" ? welcomeText : undefined);
   if (result_of_with) return result_of_with.value;
 }
 module.exports = _jade_template_fn;
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3686,11 +3738,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _panel = __webpack_require__(0);
 
-var _template = __webpack_require__(41);
+var _template = __webpack_require__(42);
 
 var _template2 = _interopRequireDefault(_template);
 
-__webpack_require__(42);
+__webpack_require__(43);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3738,7 +3790,7 @@ customElements.define('view-farm', function (_Component) {
 }(_panel.Component));
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3845,12 +3897,12 @@ function _jade_template_fn(locals) {
 
                     }, "key": animal.id,
                     "class": {
-                      inout: true,
+                      visible: false,
                       delayed: {
-                        inout: false
+                        visible: true
                       },
                       remove: {
-                        inout: true,
+                        visible: false,
                         delayRemove: 250
                       }
                     }
@@ -3882,12 +3934,12 @@ function _jade_template_fn(locals) {
 
                         }, "key": animal.id,
                         "class": {
-                          inout: true,
+                          visible: false,
                           delayed: {
-                            inout: false
+                            visible: true
                           },
                           remove: {
-                            inout: true,
+                            visible: false,
                             delayRemove: 250
                           }
                         }
@@ -3912,13 +3964,13 @@ function _jade_template_fn(locals) {
 module.exports = _jade_template_fn;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3926,7 +3978,7 @@ module.exports = _jade_template_fn;
 
 function _jade_template_fn(locals) {
   locals = locals || {};;;
-  var result_of_with = function ($component, $helpers, Array, String, backgroundAnimal, backgroundAnimalStyle, view) {
+  var result_of_with = function ($component, $helpers, Array, String, view) {
     var h = __webpack_require__(0).h;
     var __vjadeSafeCode = function __vjadeSafeCode(code) {
       return code || String(code);
@@ -3992,33 +4044,22 @@ function _jade_template_fn(locals) {
             return $$eachNodes;
           }());;
           return __jade_nodes;
-        }.call(this).filter(Boolean))); /*  linked child component, tag chosen dynamically */
+        }.call(this).filter(Boolean)));
         __jade_nodes = __jade_nodes.concat(h("div", {
           "class": {
             'farm': true
           }
-        }, [__vjadeSafeCode($component.child("view-" + view))])); /*  independent component */
-        /*  this animal uses a bit of inline styling, for positioning */
-        /*  which can be controlled by state updates */
-        __jade_nodes = __jade_nodes.concat(h("animal-badge", {
-          "attrs": {
-            animal: backgroundAnimal
-          },
-          "style": backgroundAnimalStyle,
-          "class": {
-            'background-animal': true
-          }
-        }));;
+        }, [__vjadeSafeCode($component.child("view-" + view))]));;
         return __jade_nodes;
       }.call(this).filter(Boolean))
     };
-  }.call(this, "$component" in locals ? locals.$component : typeof $component !== "undefined" ? $component : undefined, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "backgroundAnimal" in locals ? locals.backgroundAnimal : typeof backgroundAnimal !== "undefined" ? backgroundAnimal : undefined, "backgroundAnimalStyle" in locals ? locals.backgroundAnimalStyle : typeof backgroundAnimalStyle !== "undefined" ? backgroundAnimalStyle : undefined, "view" in locals ? locals.view : typeof view !== "undefined" ? view : undefined);
+  }.call(this, "$component" in locals ? locals.$component : typeof $component !== "undefined" ? $component : undefined, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "view" in locals ? locals.view : typeof view !== "undefined" ? view : undefined);
   if (result_of_with) return result_of_with.value;
 }
 module.exports = _jade_template_fn;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -130,7 +130,7 @@ var _snabbdom = __webpack_require__(14);
 
 var _snabbdom2 = _interopRequireDefault(_snabbdom);
 
-var _h = __webpack_require__(3);
+var _h = __webpack_require__(4);
 
 var _h2 = _interopRequireDefault(_h);
 
@@ -250,11 +250,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cuid = __webpack_require__(9);
+var _cuid = __webpack_require__(10);
 
 var _cuid2 = _interopRequireDefault(_cuid);
 
-var _lodash = __webpack_require__(10);
+var _lodash = __webpack_require__(11);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -854,12 +854,39 @@ exports.default = Component;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var vnode_1 = __webpack_require__(4);
-var is = __webpack_require__(5);
+var vnode_1 = __webpack_require__(5);
+var is = __webpack_require__(6);
 function addNS(data, children, sel) {
     data.ns = 'http://www.w3.org/2000/svg';
     if (sel !== 'foreignObject' && children !== undefined) {
@@ -918,7 +945,7 @@ exports.default = h;
 //# sourceMappingURL=h.js.map
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -934,7 +961,7 @@ exports.default = vnode;
 //# sourceMappingURL=vnode.js.map
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -947,7 +974,7 @@ exports.primitive = primitive;
 //# sourceMappingURL=is.js.map
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1008,16 +1035,16 @@ var StateStore = function () {
 exports.default = StateStore;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(8);
+__webpack_require__(9);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1047,22 +1074,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-customElements.define('panel-farm', function (_Component) {
-  _inherits(_class, _Component);
+var PanelFarm = function (_Component) {
+  _inherits(PanelFarm, _Component);
 
-  function _class() {
-    _classCallCheck(this, _class);
+  function PanelFarm() {
+    _classCallCheck(this, PanelFarm);
 
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (PanelFarm.__proto__ || Object.getPrototypeOf(PanelFarm)).apply(this, arguments));
   }
 
-  _createClass(_class, [{
+  _createClass(PanelFarm, [{
     key: 'config',
     get: function get() {
       return {
         defaultState: {
           buttons: ['llama', 'doge', 'kitty', 'raccoon', 'husky'],
           animals: [{ name: 'capybara', id: 0 }],
+
+          backgroundAnimal: 'doge',
+          backgroundAnimalStyle: {
+            top: '10px',
+            right: '10px'
+          },
 
           view: 'welcome'
         },
@@ -1083,11 +1116,13 @@ customElements.define('panel-farm', function (_Component) {
     }
   }]);
 
-  return _class;
-}(_panel.Component));
+  return PanelFarm;
+}(_panel.Component);
+
+customElements.define('panel-farm', PanelFarm);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1203,7 +1238,7 @@ customElements.define('panel-farm', function (_Component) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -1710,34 +1745,7 @@ var pick = baseRest(function(object, props) {
 
 module.exports = pick;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 12 */
@@ -1883,8 +1891,8 @@ exports.default = ExtendableHTMLElement;
 
 "use strict";
 
-var vnode_1 = __webpack_require__(4);
-var is = __webpack_require__(5);
+var vnode_1 = __webpack_require__(5);
+var is = __webpack_require__(6);
 var htmldomapi_1 = __webpack_require__(15);
 function isUndef(s) { return s === undefined; }
 function isDef(s) { return s !== undefined; }
@@ -1905,7 +1913,7 @@ function createKeyToOldIdx(children, beginIdx, endIdx) {
     return map;
 }
 var hooks = ['create', 'update', 'remove', 'destroy', 'pre', 'post'];
-var h_1 = __webpack_require__(3);
+var h_1 = __webpack_require__(4);
 exports.h = h_1.h;
 var thunk_1 = __webpack_require__(16);
 exports.thunk = thunk_1.thunk;
@@ -2222,7 +2230,7 @@ exports.default = exports.htmlDomApi;
 
 "use strict";
 
-var h_1 = __webpack_require__(3);
+var h_1 = __webpack_require__(4);
 function copyToThunk(vnode, thunk) {
     thunk.elm = vnode.elm;
     vnode.data.fn = thunk.data.fn;
@@ -2872,7 +2880,7 @@ var _stateController = __webpack_require__(27);
 
 var _stateController2 = _interopRequireDefault(_stateController);
 
-var _stateStore = __webpack_require__(6);
+var _stateStore = __webpack_require__(7);
 
 var _stateStore2 = _interopRequireDefault(_stateStore);
 
@@ -3185,7 +3193,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _stateStore = __webpack_require__(6);
+var _stateStore = __webpack_require__(7);
 
 var _stateStore2 = _interopRequireDefault(_stateStore);
 
@@ -3315,16 +3323,16 @@ var ANIMAL_URLS = {
   raccoon: _raccoon2.default
 };
 
-customElements.define('animal-badge', function (_Component) {
-  _inherits(_class, _Component);
+var AnimalBadge = function (_Component) {
+  _inherits(AnimalBadge, _Component);
 
-  function _class() {
-    _classCallCheck(this, _class);
+  function AnimalBadge() {
+    _classCallCheck(this, AnimalBadge);
 
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (AnimalBadge.__proto__ || Object.getPrototypeOf(AnimalBadge)).apply(this, arguments));
   }
 
-  _createClass(_class, [{
+  _createClass(AnimalBadge, [{
     key: 'config',
     get: function get() {
       var _this2 = this;
@@ -3342,8 +3350,8 @@ customElements.define('animal-badge', function (_Component) {
           isCloseable: function isCloseable() {
             return _this2.isAttributeEnabled('closeable');
           },
-          isVisible: function isVisible() {
-            return _this2.classList.contains('visible');
+          isEnteringOrExiting: function isEnteringOrExiting() {
+            return _this2.classList.contains('inout');
           }
         }
       };
@@ -3351,48 +3359,50 @@ customElements.define('animal-badge', function (_Component) {
   }], [{
     key: 'observedAttributes',
     get: function get() {
-      return [].concat(_toConsumableArray(_get(_class.__proto__ || Object.getPrototypeOf(_class), 'observedAttributes', this)), ['animal', 'class', 'closeable']);
+      return [].concat(_toConsumableArray(_get(AnimalBadge.__proto__ || Object.getPrototypeOf(AnimalBadge), 'observedAttributes', this)), ['animal', 'class', 'closeable']);
     }
   }]);
 
-  return _class;
-}(_panel.Component));
+  return AnimalBadge;
+}(_panel.Component);
+
+customElements.define('animal-badge', AnimalBadge);
 
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/capybara-793c345e9e7a4190a60112ca097ec950.png";
+module.exports = __webpack_require__.p + "images/capybara-eb88952edd5c73ce7e08368458caa01a.png";
 
 /***/ }),
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/doge-793b8d7e2f308a0d46a1662b9f4a5799.png";
+module.exports = __webpack_require__.p + "images/doge-ecdd44281372b7491186224042beec12.png";
 
 /***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/husky-223cc57d00cbd4f2e97bc7c4284aac3a.png";
+module.exports = __webpack_require__.p + "images/husky-d639b17fd6be5007059907a97fcb83b2.png";
 
 /***/ }),
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/kitty-87c14f07825dafb2f7a4b6226b4f1f37.png";
+module.exports = __webpack_require__.p + "images/kitty-831425589b8197ab2a8762d82e12bdfe.png";
 
 /***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/llama-ede62aa08104695c68a015b214a5efc3.png";
+module.exports = __webpack_require__.p + "images/llama-d626d9417525a096491984efe40a9fbe.png";
 
 /***/ }),
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "images/raccoon-54450e6522520b8dcb63a606c5e96888.png";
+module.exports = __webpack_require__.p + "images/raccoon-e56ccb83c2469bedb80820d62a3d45ce.png";
 
 /***/ }),
 /* 35 */
@@ -3408,7 +3418,7 @@ function _jade_template_fn(locals) {
     return {
       value: h("div", {
         "class": Object.assign({}, {
-          visible: $helpers.isVisible()
+          inout: $helpers.isEnteringOrExiting()
         }, {
           'animal-badge': true
         })
@@ -3450,7 +3460,7 @@ exports = module.exports = __webpack_require__(37)(false);
 
 
 // module
-exports.push([module.i, ".animal-badge {\n  align-items: center;\n  background-color: #e5e5ff;\n  border-radius: 50px;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.15);\n  display: inline-flex;\n  height: 100px;\n  justify-content: center;\n  margin: 5px;\n  opacity: 0;\n  position: relative;\n  width: 0px;\n  transition: width 250ms, opacity 250ms;\n}\n.animal-badge.visible {\n  opacity: 1;\n  width: 100px;\n}\n.animal-badge:hover .close-button {\n  display: block;\n}\n.animal-badge .close-button {\n  cursor: pointer;\n  display: none;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n.animal-badge .close-button::before {\n  color: #f00;\n  content: \"x\";\n  font-size: 20px;\n}\n", ""]);
+exports.push([module.i, ".animal-badge {\n  align-items: center;\n  background-color: #e5e5ff;\n  border-radius: 50px;\n  box-shadow: 0 10px 40px rgba(0,0,0,0.15);\n  display: inline-flex;\n  height: 100px;\n  justify-content: center;\n  margin: 5px;\n  opacity: 1;\n  position: relative;\n  transition: width 250ms, opacity 250ms;\n  width: 100px;\n}\n.animal-badge.inout {\n  opacity: 0;\n  width: 0px;\n}\n.animal-badge:hover .close-button {\n  display: block;\n}\n.animal-badge .close-button {\n  cursor: pointer;\n  display: none;\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n.animal-badge .close-button::before {\n  color: #f00;\n  content: \"x\";\n  font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -3576,7 +3586,7 @@ customElements.define('view-welcome', function (_Component) {
     get: function get() {
       return {
         defaultState: {
-          welcomeAnimals: [{ name: 'doge', style: { bottom: '-200%', left: '5%' } }, { name: 'husky', style: { top: '20%', right: '25%' } }, { name: 'raccoon', style: { bottom: '10%', left: '45%' } }]
+          welcomeText: 'Welcome to the farm!' // dynamic just for demo purposes
         },
 
         helpers: {
@@ -3602,8 +3612,11 @@ customElements.define('view-welcome', function (_Component) {
 
 function _jade_template_fn(locals) {
   locals = locals || {};;;
-  var result_of_with = function ($helpers, Array, animals, welcomeAnimals) {
+  var result_of_with = function ($helpers, String, animals, welcomeText) {
     var h = __webpack_require__(0).h;
+    var __vjadeSafeCode = function __vjadeSafeCode(code) {
+      return code || String(code);
+    };
     return {
       value: h("div", {
         "class": {
@@ -3611,11 +3624,7 @@ function _jade_template_fn(locals) {
         }
       }, function () {
         var __jade_nodes = [];
-        __jade_nodes = __jade_nodes.concat(h("h1", function () {
-          var __jade_nodes = [];
-          __jade_nodes = __jade_nodes.concat("Welcome to the farm!");;
-          return __jade_nodes;
-        }.call(this).filter(Boolean)));
+        __jade_nodes = __jade_nodes.concat(h("h1", [__vjadeSafeCode(welcomeText)]));
         __jade_nodes = __jade_nodes.concat(h("p", function () {
           var __jade_nodes = [];
           __jade_nodes = __jade_nodes.concat(function () {
@@ -3659,60 +3668,77 @@ function _jade_template_fn(locals) {
           }.call(this));
           __jade_nodes = __jade_nodes.concat(" to see " + animals.length + " cute " + $helpers.pluralize("animal", animals.length) + "!");;
           return __jade_nodes;
-        }.call(this).filter(Boolean))); /*  These animals use a bit of inline styling, for positioning which can be controlled by state updates */
-        __jade_nodes = __jade_nodes.concat(function () {
-          var $$obj = welcomeAnimals;
-          var $$eachNodes;
-          var $$iterated = false;
-          if (Array.isArray($$obj)) {
-            $$eachNodes = $$obj.reduce(function ($$eachNodes, animal, $index) {
-              $$iterated = true;
-              return $$eachNodes.concat(function () {
-                var __jade_nodes = [];
-                __jade_nodes = __jade_nodes.concat(h("animal-badge", {
-                  "attrs": {
-                    animal: animal.name
-                  },
-                  "style": animal.style,
-                  "class": {
-                    'visible': true
-                  }
-                }));;
-                return __jade_nodes;
-              }.call(this));
-            }, []);
-          } else {
-            $$eachNodes = [];
-            for (var $$objKey in $$obj) {
-              (function () {
-                var $index = $$objKey;
-                if ($$obj.hasOwnProperty($index)) {
-                  $$iterated = true;
-                  var animal = $$obj[$index];
-                  $$eachNodes = $$eachNodes.concat(function () {
-                    var __jade_nodes = [];
-                    __jade_nodes = __jade_nodes.concat(h("animal-badge", {
-                      "attrs": {
-                        animal: animal.name
-                      },
-                      "style": animal.style,
-                      "class": {
-                        'visible': true
-                      }
-                    }));;
-                    return __jade_nodes;
-                  }.call(this));
-                }
-              })();
+        }.call(this).filter(Boolean)));
+        __jade_nodes = __jade_nodes.concat(h("p", function () {
+          var __jade_nodes = [];
+          __jade_nodes = __jade_nodes.concat("In the JS console, you can get a reference to the running app with");
+          __jade_nodes = __jade_nodes.concat(h("span", {
+            "class": {
+              'code-sample': true
             }
+          }, function () {
+            var __jade_nodes = [];
+            __jade_nodes = __jade_nodes.concat(" app = document.querySelector(`panel-farm`)");;
+            return __jade_nodes;
+          }.call(this).filter(Boolean)));
+          __jade_nodes = __jade_nodes.concat(function () {
+            var __jade_nodes = [];
+            __jade_nodes = __jade_nodes.concat(". Look at ");
+            __jade_nodes = __jade_nodes.concat(function () {
+              var __jade_nodes = [];
+              __jade_nodes = __jade_nodes.concat(h("span", {
+                "class": {
+                  'code-sample': true
+                }
+              }, function () {
+                var __jade_nodes = [];
+                __jade_nodes = __jade_nodes.concat("app.state");;
+                return __jade_nodes;
+              }.call(this).filter(Boolean)));;
+              return __jade_nodes;
+            }.call(this));
+            __jade_nodes = __jade_nodes.concat(" to get an idea of what's controllable dynamically.");;
+            return __jade_nodes;
+          }.call(this));
+          __jade_nodes = __jade_nodes.concat(" For instance, to change the header text of this screen, try:");;
+          return __jade_nodes;
+        }.call(this).filter(Boolean)));
+        __jade_nodes = __jade_nodes.concat(h("span", {
+          "class": {
+            'code-sample': true
           }
-
-          return $$eachNodes;
-        }());;
+        }, function () {
+          var __jade_nodes = [];
+          __jade_nodes = __jade_nodes.concat("app.update({welcomeText: `Hello there!`});");;
+          return __jade_nodes;
+        }.call(this).filter(Boolean)));
+        __jade_nodes = __jade_nodes.concat(h("p", function () {
+          var __jade_nodes = [];
+          __jade_nodes = __jade_nodes.concat(function () {
+            var __jade_nodes = [];
+            __jade_nodes = __jade_nodes.concat("The ");
+            __jade_nodes = __jade_nodes.concat(function () {
+              var __jade_nodes = [];
+              __jade_nodes = __jade_nodes.concat(h("a", {
+                "attrs": {
+                  href: '#farm'
+                }
+              }, function () {
+                var __jade_nodes = [];
+                __jade_nodes = __jade_nodes.concat("farm screen");;
+                return __jade_nodes;
+              }.call(this).filter(Boolean)));;
+              return __jade_nodes;
+            }.call(this));
+            __jade_nodes = __jade_nodes.concat(" starts out with one cute capybara and some buttons to add different animals to keep it company. Can you add another capybara?");;
+            return __jade_nodes;
+          }.call(this));;
+          return __jade_nodes;
+        }.call(this).filter(Boolean)));;
         return __jade_nodes;
       }.call(this).filter(Boolean))
     };
-  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeAnimals" in locals ? locals.welcomeAnimals : typeof welcomeAnimals !== "undefined" ? welcomeAnimals : undefined);
+  }.call(this, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "animals" in locals ? locals.animals : typeof animals !== "undefined" ? animals : undefined, "welcomeText" in locals ? locals.welcomeText : typeof welcomeText !== "undefined" ? welcomeText : undefined);
   if (result_of_with) return result_of_with.value;
 }
 module.exports = _jade_template_fn;
@@ -3803,59 +3829,67 @@ function _jade_template_fn(locals) {
         }
       }, function () {
         var __jade_nodes = [];
-        __jade_nodes = __jade_nodes.concat(function () {
-          var $$obj = buttons;
-          var $$eachNodes;
-          var $$iterated = false;
-          if (Array.isArray($$obj)) {
-            $$eachNodes = $$obj.reduce(function ($$eachNodes, buttonType, $index) {
-              $$iterated = true;
-              return $$eachNodes.concat(function () {
-                var __jade_nodes = [];
-                __jade_nodes = __jade_nodes.concat(h("button", {
-                  "on": {
-                    click: function click() {
-                      return $helpers.addAnimal(buttonType);
-                    }
-                  }
-                }, function () {
-                  var __jade_nodes = [];
-                  __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
-                  return __jade_nodes;
-                }.call(this).filter(Boolean)));;
-                return __jade_nodes;
-              }.call(this));
-            }, []);
-          } else {
-            $$eachNodes = [];
-            for (var $$objKey in $$obj) {
-              (function () {
-                var $index = $$objKey;
-                if ($$obj.hasOwnProperty($index)) {
-                  $$iterated = true;
-                  var buttonType = $$obj[$index];
-                  $$eachNodes = $$eachNodes.concat(function () {
-                    var __jade_nodes = [];
-                    __jade_nodes = __jade_nodes.concat(h("button", {
-                      "on": {
-                        click: function click() {
-                          return $helpers.addAnimal(buttonType);
-                        }
-                      }
-                    }, function () {
-                      var __jade_nodes = [];
-                      __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
-                      return __jade_nodes;
-                    }.call(this).filter(Boolean)));;
-                    return __jade_nodes;
-                  }.call(this));
-                }
-              })();
-            }
+        __jade_nodes = __jade_nodes.concat(h("div", {
+          "class": {
+            'farm-buttons': true
           }
+        }, function () {
+          var __jade_nodes = [];
+          __jade_nodes = __jade_nodes.concat(function () {
+            var $$obj = buttons;
+            var $$eachNodes;
+            var $$iterated = false;
+            if (Array.isArray($$obj)) {
+              $$eachNodes = $$obj.reduce(function ($$eachNodes, buttonType, $index) {
+                $$iterated = true;
+                return $$eachNodes.concat(function () {
+                  var __jade_nodes = [];
+                  __jade_nodes = __jade_nodes.concat(h("button", {
+                    "on": {
+                      click: function click() {
+                        return $helpers.addAnimal(buttonType);
+                      }
+                    }
+                  }, function () {
+                    var __jade_nodes = [];
+                    __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
+                    return __jade_nodes;
+                  }.call(this).filter(Boolean)));;
+                  return __jade_nodes;
+                }.call(this));
+              }, []);
+            } else {
+              $$eachNodes = [];
+              for (var $$objKey in $$obj) {
+                (function () {
+                  var $index = $$objKey;
+                  if ($$obj.hasOwnProperty($index)) {
+                    $$iterated = true;
+                    var buttonType = $$obj[$index];
+                    $$eachNodes = $$eachNodes.concat(function () {
+                      var __jade_nodes = [];
+                      __jade_nodes = __jade_nodes.concat(h("button", {
+                        "on": {
+                          click: function click() {
+                            return $helpers.addAnimal(buttonType);
+                          }
+                        }
+                      }, function () {
+                        var __jade_nodes = [];
+                        __jade_nodes = __jade_nodes.concat("Add " + buttonType + "");;
+                        return __jade_nodes;
+                      }.call(this).filter(Boolean)));;
+                      return __jade_nodes;
+                    }.call(this));
+                  }
+                })();
+              }
+            }
 
-          return $$eachNodes;
-        }());
+            return $$eachNodes;
+          }());;
+          return __jade_nodes;
+        }.call(this).filter(Boolean)));
         __jade_nodes = __jade_nodes.concat(h("div", {
           "class": {
             'farm-animals': true
@@ -3885,12 +3919,12 @@ function _jade_template_fn(locals) {
 
                     }, "key": animal.id,
                     "class": {
-                      visible: false,
+                      inout: true,
                       delayed: {
-                        visible: true
+                        inout: false
                       },
                       remove: {
-                        visible: false,
+                        inout: true,
                         delayRemove: 250
                       }
                     }
@@ -3922,12 +3956,12 @@ function _jade_template_fn(locals) {
 
                         }, "key": animal.id,
                         "class": {
-                          visible: false,
+                          inout: true,
                           delayed: {
-                            visible: true
+                            inout: false
                           },
                           remove: {
-                            visible: false,
+                            inout: true,
                             delayRemove: 250
                           }
                         }
@@ -3966,7 +4000,7 @@ module.exports = _jade_template_fn;
 
 function _jade_template_fn(locals) {
   locals = locals || {};;;
-  var result_of_with = function ($component, $helpers, Array, String, view) {
+  var result_of_with = function ($component, $helpers, Array, String, backgroundAnimal, backgroundAnimalStyle, view) {
     var h = __webpack_require__(0).h;
     var __vjadeSafeCode = function __vjadeSafeCode(code) {
       return code || String(code);
@@ -4032,16 +4066,27 @@ function _jade_template_fn(locals) {
             return $$eachNodes;
           }());;
           return __jade_nodes;
-        }.call(this).filter(Boolean)));
+        }.call(this).filter(Boolean))); /*  linked child component, tag chosen dynamically */
         __jade_nodes = __jade_nodes.concat(h("div", {
           "class": {
             'farm': true
           }
-        }, [__vjadeSafeCode($component.child("view-" + view))]));;
+        }, [__vjadeSafeCode($component.child("view-" + view))])); /*  independent component */
+        /*  this animal uses a bit of inline styling, for positioning */
+        /*  which can be controlled by state updates */
+        __jade_nodes = __jade_nodes.concat(h("animal-badge", {
+          "attrs": {
+            animal: backgroundAnimal
+          },
+          "style": backgroundAnimalStyle,
+          "class": {
+            'background-animal': true
+          }
+        }));;
         return __jade_nodes;
       }.call(this).filter(Boolean))
     };
-  }.call(this, "$component" in locals ? locals.$component : typeof $component !== "undefined" ? $component : undefined, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "view" in locals ? locals.view : typeof view !== "undefined" ? view : undefined);
+  }.call(this, "$component" in locals ? locals.$component : typeof $component !== "undefined" ? $component : undefined, "$helpers" in locals ? locals.$helpers : typeof $helpers !== "undefined" ? $helpers : undefined, "Array" in locals ? locals.Array : typeof Array !== "undefined" ? Array : undefined, "String" in locals ? locals.String : typeof String !== "undefined" ? String : undefined, "backgroundAnimal" in locals ? locals.backgroundAnimal : typeof backgroundAnimal !== "undefined" ? backgroundAnimal : undefined, "backgroundAnimalStyle" in locals ? locals.backgroundAnimalStyle : typeof backgroundAnimalStyle !== "undefined" ? backgroundAnimalStyle : undefined, "view" in locals ? locals.view : typeof view !== "undefined" ? view : undefined);
   if (result_of_with) return result_of_with.value;
 }
 module.exports = _jade_template_fn;
