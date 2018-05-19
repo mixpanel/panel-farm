@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "build-test": "webpack --config test/browser/webpack.config.js",
     "publish": "npm run build && node publish-static.js",
     "start": "webpack-dev-server --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-browser-local": "wct --plugin local test/browser/build/index.html",
+    "test-browser-p": "wct --plugin local --persistent test/browser/build/index.html",
+    "test": "npm run build-test && npm run test-browser-local"
   },
   "author": "dev@mixpanel.com",
   "license": "MIT",
@@ -36,6 +39,7 @@
     "stylus-loader": "3.0.2",
     "virtual-jade": "0.9.1",
     "virtual-jade-loader": "1.0.0",
+    "web-component-tester": "5.0.0",
     "webpack": "3.10.0",
     "webpack-dev-server": "2.9.1"
   }
