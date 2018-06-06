@@ -22,6 +22,7 @@ const webpackConfig = {
       `@webcomponents/custom-elements`,
       `@webcomponents/shadydom`,
     ],
+    'animal-badge': `./src/panel-farm/animal-badge/index.js`,
   },
   output: {
     path: path.join(__dirname, `build`),
@@ -84,6 +85,7 @@ const webpackConfig = {
     new ExtractTextPlugin(`[name]-[hash].bundle.css`),
     new HtmlWebpackPlugin({
       template: `index.template.html`,
+      chunks: [`polyfills`, `farm`],
       chunksSortMode: (a, b) => a.names[0] === `polyfills` ? -1 : 1, // polyfills first
     }),
   ],
