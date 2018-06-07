@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
 const webpack = require(`webpack`);
 
-const {BADGE} = process.env;  // build standalone animal-badge for linking
+const {
+  PROD,        // productionized build
+  PUBLIC_PATH, // file-loader publicPath override
+} = process.env;
 
 
 const BABEL_LOADER = {
@@ -27,9 +30,12 @@ const fileLoaderOptions = {
 };
 const optionalPlugins = [];
 
-if (BADGE) {
+if (PROD) {
   fileLoaderOptions.publicPath = `https://mixpanel.github.io/panel-farm/images/`;
   optionalPlugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+if (PUBLIC_PATH) {
+  fileLoaderOptions.publicPath = PUBLIC_PATH;
 }
 
 const webpackConfig = {
