@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require(`extract-text-webpack-plugin`);
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 const {BADGE} = process.env;  // build standalone animal-badge for linking
 
@@ -16,12 +17,16 @@ const STYLUS_LOADERS = [
   {loader: `postcss-loader`},
   {loader: `stylus-loader`},
 ];
+
 const fileLoaderOptions = {
   name: `[name]-[hash].[ext]`,
   outputPath: `images/`,
 };
+const optionalPlugins = [];
+
 if (BADGE) {
   fileLoaderOptions.publicPath = `https://mixpanel.github.io/panel-farm/images/`;
+  optionalPlugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 const webpackConfig = {
@@ -94,6 +99,7 @@ const webpackConfig = {
       chunks: [`polyfills`, `farm`],
       chunksSortMode: (a, b) => a.names[0] === `polyfills` ? -1 : 1, // polyfills first
     }),
+    ...optionalPlugins,
   ],
 };
 
