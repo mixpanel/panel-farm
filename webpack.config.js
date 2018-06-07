@@ -2,6 +2,8 @@ const ExtractTextPlugin = require(`extract-text-webpack-plugin`);
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 const path = require(`path`);
 
+const {BADGE} = process.env;  // build standalone animal-badge for linking
+
 
 const BABEL_LOADER = {
   loader: `babel-loader`,
@@ -14,6 +16,13 @@ const STYLUS_LOADERS = [
   {loader: `postcss-loader`},
   {loader: `stylus-loader`},
 ];
+const fileLoaderOptions = {
+  name: `[name]-[hash].[ext]`,
+  outputPath: `images/`,
+};
+if (BADGE) {
+  fileLoaderOptions.publicPath = `https://mixpanel.github.io/panel-farm/images/`;
+}
 
 const webpackConfig = {
   entry: {
@@ -72,10 +81,7 @@ const webpackConfig = {
         use: [
           {
             loader: `file-loader`,
-            options: {
-              name: `[name]-[hash].[ext]`,
-              outputPath: `images/`,
-            },
+            options: fileLoaderOptions,
           }
         ],
       },
