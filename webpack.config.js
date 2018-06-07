@@ -12,9 +12,12 @@ const BABEL_LOADER = {
     presets: [`env`],
   },
 };
-const STYLUS_LOADERS = [
+const CSS_LOADERS = [
   {loader: `css-loader`},
   {loader: `postcss-loader`},
+];
+const STYLUS_LOADERS = [
+  ...CSS_LOADERS,
   {loader: `stylus-loader`},
 ];
 
@@ -37,6 +40,7 @@ const webpackConfig = {
       `@webcomponents/shadydom`,
     ],
     'animal-badge': `./src/panel-farm/animal-badge/index.js`,
+    'css-reset': './src/reset.css',
   },
   output: {
     path: path.join(__dirname, `build`),
@@ -82,6 +86,14 @@ const webpackConfig = {
         ],
       },
       {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract({
+          use: CSS_LOADERS,
+          fallback: `style-loader`,
+        }),
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
@@ -96,7 +108,7 @@ const webpackConfig = {
     new ExtractTextPlugin(`[name]-[hash].bundle.css`),
     new HtmlWebpackPlugin({
       template: `index.template.html`,
-      chunks: [`polyfills`, `farm`],
+      chunks: [`polyfills`, `css-reset`, `farm`],
       chunksSortMode: (a, b) => a.names[0] === `polyfills` ? -1 : 1, // polyfills first
     }),
     ...optionalPlugins,
