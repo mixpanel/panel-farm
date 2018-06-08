@@ -29,11 +29,19 @@ class AnimalBadge extends Component {
 
       helpers: {
         ANIMAL_URLS,
-        clickClose: () => this.dispatchEvent(new CustomEvent(`close`)),
+        clickClose: () => {
+          this.dispatchEvent(new CustomEvent(`close`));
+          this.update();  // firefox hacky hack for animations
+        },
         isCloseable: () => this.isAttributeEnabled(`closeable`),
         isEnteringOrExiting: () => this.classList.contains(`inout`),
       },
     };
+  }
+
+  connectedCallback() {
+    super.connectedCallback(...arguments);
+    requestAnimationFrame(() => this.update());  // firefox hacky hack for animations
   }
 
   static get observedAttributes() {
