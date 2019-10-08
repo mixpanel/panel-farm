@@ -11,7 +11,7 @@ class PanelFarm extends Component {
   get config() {
     return {
       defaultState: {
-        buttons: [`llama`, `doge`, `kitty`, `raccoon`, `husky`],
+        buttons: [`capybara`, `llama`, `doge`, `kitty`, `raccoon`, `husky`],
         animals: [{name: `capybara`, id: 0}],
 
         backgroundAnimal: `doge`,
